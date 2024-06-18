@@ -31,6 +31,12 @@ public class UsersController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @GetMapping("/users/{email}")
+    public ResponseEntity<UserResponseDto> getUserByEmail(@PathVariable String email){
+        var res = usersService.getUserByEmail(email);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @PostMapping("/users")
     public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto){
         var res = usersService.createUser(userRequestDto);

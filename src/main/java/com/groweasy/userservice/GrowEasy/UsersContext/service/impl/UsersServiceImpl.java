@@ -50,6 +50,13 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public UserResponseDto getUserByEmail(String email) {
+        var user = usersRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró un usuario con el email: " + email));
+        return modelMapper.map(user, UserResponseDto.class);
+    }
+
+    @Override
     public UserResponseDto updateUser(Long id, UserRequestDto userRequestDto) {
         var user = usersRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un usuario con el id: " + id));

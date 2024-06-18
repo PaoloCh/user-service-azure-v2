@@ -10,6 +10,8 @@ public interface UsersService {
 
     UserResponseDto getUserById(Long id);
 
+    UserResponseDto getUserByEmail(String email);
+
     //Create
     UserResponseDto createUser(UserRequestDto user);
 
